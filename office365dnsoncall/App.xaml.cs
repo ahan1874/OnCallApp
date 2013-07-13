@@ -9,11 +9,33 @@ using Microsoft.Phone.Shell;
 using office365dnsoncall.Resources;
 
 using Microsoft.WindowsAzure.MobileServices;
+using office365dnsoncall.ViewModels;
 
 namespace office365dnsoncall
 {
     public partial class App : Application
     {
+        private static MainViewModel viewModel = null;
+
+
+
+        /// <summary>
+        /// A static ViewModel used by the views to bind against.
+        /// </summary>
+        /// <returns>The MainViewModel object.</returns>
+        public static MainViewModel ViewModel
+        {
+            get
+            {
+                // Delay creation of the view model until necessary
+                if (viewModel == null)
+                    viewModel = new MainViewModel();
+
+                return viewModel;
+            }
+
+
+        }
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>

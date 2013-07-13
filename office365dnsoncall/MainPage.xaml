@@ -13,14 +13,87 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 
-    <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
+
+        <!--Panorama control-->
+        <phone:Panorama Title="my application">
+            <phone:Panorama.Background>
+                <ImageBrush ImageSource="/office365dnsoncall;component/Assets/PanoramaBackground.png"/>
+            </phone:Panorama.Background>
+
+            <!--Panorama item two-->
+            <phone:PanoramaItem>
+                <!--Double line list with image placeholder and text wrapping using a floating header that scrolls with the content-->
+                <phone:LongListSelector Margin="0,-38,-22,2" ItemsSource="{Binding Items}">
+                    <phone:LongListSelector.ListHeaderTemplate>
+                        <DataTemplate>
+                            <Grid Margin="12,0,0,38">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="On Call List"
+                                           Style="{StaticResource PanoramaItemHeaderTextStyle}"
+                                           Grid.Row="0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </phone:LongListSelector.ListHeaderTemplate>
+                    <phone:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="150" Width="432">
+                                <!--Replace rectangle with image-->
+                                <Border BorderThickness="1" Width="99" Height="99" BorderBrush="#FFFFC700" Background="#FFFFC700" />
+                                <StackPanel Width="311" Margin="8,-7,0,0">
+                                    <TextBlock Text="{Binding Name}"  TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}" />
+                                    <TextBlock Text="{Binding Phone}" Height="40" TextWrapping="Wrap" Margin="10,-2,10,0" VerticalAlignment="Center" Style="{StaticResource PhoneTextSubtleStyle}" Tap="TextBlock_Tap_1" />
+                                    <TextBlock Text="{Binding Email}" Height="60" TextWrapping="Wrap" Margin="10,-2,10,0" VerticalAlignment="Center" Style="{StaticResource PhoneTextSubtleStyle}" Tap="TextBlock_Tap_2"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </phone:LongListSelector.ItemTemplate>
+                </phone:LongListSelector>
+            </phone:PanoramaItem>
+
+            <!--Panorama item three-->
+            <phone:PanoramaItem Header="Candiate List" Orientation="Horizontal">
+                <!--Double wide Panorama with large image placeholders-->
+                <Grid>
+                    <StackPanel Margin="0,4,16,0" Orientation="Vertical" VerticalAlignment="Top">
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                            <Border Background="#FFFFC700" Height="173" Width="173" Margin="12,0,0,0"/>
+                            <Border Background="#FFFFC700" Height="173" Width="173" Margin="12,0,0,0"/>
+                            <Border Background="#FFFFC700" Height="173" Width="173" Margin="12,0,0,0"/>
+                            <Border Background="#FFFFC700" Height="173" Width="173" Margin="12,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,12,0,0">
+                            <Border Background="#FFFFC700" Height="173" Width="173" Margin="12,0,0,0"/>
+                            <Border Background="#FFFFC700" Height="173" Width="173" Margin="12,0,0,0"/>
+                            <Border Background="#FFFFC700" Height="173" Width="173" Margin="12,0,0,0"/>
+                            <Border Background="#FFFFC700" Height="173" Width="173" Margin="12,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </phone:PanoramaItem>
+        </phone:Panorama>
+
+        <!--Uncomment to see an alignment grid to help ensure your controls are
+            aligned on common boundaries.  The image has a top margin of -32px to
+            account for the System Tray. Set this to 0 (or remove the margin altogether)
+            if the System Tray is hidden.
+
+            Before shipping remove this XAML and the image itself.-->
+        <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
+
+    </Grid>
+    
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <!--<Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
-        <!--TitlePanel contains the name of the application and page title-->
+
         <Grid x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
@@ -36,7 +109,7 @@
             <Button Grid.Row ="1" Grid.Column="1" Name="SecondaryName" Click="CallSecondary"></Button>
         </Grid>
 
-        <!--ContentPanel - place additional content here-->
+
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -57,7 +130,6 @@
             <TextBox Grid.Row="3" Grid.Column="0" Name="Email" Text="Email" />
             <TextBox Grid.Row="4" Grid.Column="0" Name="Order" Text="Numeric Order" />
             <Button Grid.Row ="2" Grid.Column="1" Name="ButtonSave" Click="ButtonSave_Click">Save</Button>
-            <!--<TextBlock Grid.Row="4" Grid.ColumnSpan="2" Text="Click refresh below to load the unfinished TodoItems from your database. Use the checkbox to complete and update your TodoItems" TextWrapping="Wrap" Margin="12" />-->
             <Button Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Name="ButtonRefresh" Click="ButtonRefresh_Click">Refresh</Button>
             <phone:LongListSelector Grid.Row="6" Grid.ColumnSpan="2" Name="ListItems">
                 <phone:LongListSelector.ItemTemplate>
@@ -69,5 +141,5 @@
                 </phone:LongListSelector.ItemTemplate>
             </phone:LongListSelector>
         </Grid>
-    </Grid>
+    </Grid>-->
 </phone:PhoneApplicationPage>

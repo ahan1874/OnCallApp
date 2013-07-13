@@ -1,0 +1,16 @@
+﻿<vm:MainViewModel
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:office365dnsoncall.ViewModels"
+    SampleProperty="Sample Text Property Value">
+
+    <vm:MainViewModel.Items>
+        <vm:ItemViewModel Name="Zichong Luo" Phone="4259226398" Email="hanchen@microsoft.com" />
+        <vm:ItemViewModel Name="Neo Chen" Phone="4259226398" Email="hanchen@microsoft.com" />
+        <!--<vm:ItemViewModel Name="Rajesh" Phone="4259226398" Email="hanchen@microsoft.com" />
+        <vm:ItemViewModel Name="Meenu" Phone="4259226398" Email="hanchen@microsoft.com" />
+        <vm:ItemViewModel Name="Elena" Phone="4259226398" Email="hanchen@microsoft.com"  />
+        <vm:ItemViewModel Name="Ankur Dongle" Phone="4259226398" Email="hanchen@microsoft.com" />-->
+    </vm:MainViewModel.Items>
+
+</vm:MainViewModel>
